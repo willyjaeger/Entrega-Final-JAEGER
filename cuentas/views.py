@@ -19,3 +19,23 @@ def  listar_usuarios(request):
     for usuario in usuarios:
         respuesta += f"{usuario.nombre} - {usuario.apellido} <br>"
     return HttpResponse(respuesta)
+
+def inicio(request):
+    return render(request, 'inicio.html')
+
+def login(request):
+    return render(request, 'login.html') 
+
+def mensajes(request):
+    return render(request, 'mensajes.html')
+
+def perfil(request):
+    return render(request, 'perfil.html')   
+ 
+def usuario(request):
+    return render(request, 'cuentas/usuario.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+
