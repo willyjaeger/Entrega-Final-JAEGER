@@ -9,7 +9,7 @@ class Usuario(models.Model):
     email=models.EmailField(max_length=40,null=True,default="")
         
     def __str__(self):
-        return f"{self.nombreusuario} - {self.email}"
+        return f"{self.apellido}, {self.nombre} - {self.nombreusuario} -  {self.email}"
 
 class Perfiles(models.Model):
     imagen=models.CharField(max_length=40,null=False,default="") 
@@ -22,10 +22,22 @@ class Perfiles(models.Model):
     def __str__(self):
         return f"{self.nombre} - {self.paginaweb}"   
     
-class Mensajes(models.Model):
+class Mensajes(models.Model):    
     mensaje=models.CharField(max_length=200,null=False,default="") 
     usuarioidemisor=models.IntegerField()
     usuarioidreceptor=models.IntegerField() 
     leido=models.BooleanField(default=False)
     def __str__(self):
         return f"{self.mensaje} - {self.usuarioid}"
+    
+
+class EntradasBlog(models.Model):
+    fecha=models.DateTimeField(null=False)   
+    titulo=models.CharField(max_length=40,null=False,default="") 
+    subtitulo=models.CharField(max_length=40,null=False,default="")
+    contenido=models.CharField(max_length=100,null=False,default="")
+    usuarioid=models.IntegerField()
+    autor=models.CharField(max_length=40,null=False,default="")
+    imagen=models.CharField(max_length=40,null=False,default="")
+    def __str__(self):
+        return f"{self.fecha} - {self.titulo} - {self.contenido} - {self.autor} "  
